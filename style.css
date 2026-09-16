@@ -70,6 +70,70 @@ body {
     color: #0066cc;
 }
 
+/* Desktop Dropdown Styles */
+.nav-menu .dropdown {
+    position: relative;
+}
+
+.nav-menu .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 8px 0;
+    min-width: 160px;
+    display: none;
+    list-style: none;
+    z-index: 1000;
+}
+
+.nav-menu .dropdown-menu li a {
+    display: block;
+    padding: 8px 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.nav-menu .dropdown-menu li a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Afișează dropdown-ul la hover pe desktop */
+@media (min-width: 769px) {
+    .nav-menu .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+/* Mobile Sidebar Dropdown Styles */
+.mobile-dropdown-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    padding: 10px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+}
+
+.mobile-submenu {
+    display: none;
+    list-style: none;
+    padding-left: 15px;
+}
+
+.mobile-dropdown.open .mobile-submenu {
+    display: block;
+}
+
+
 /* --- Stiluri Buton Hamburger și Meniu Mobil --- */
 .hamburger {
     display: none;
