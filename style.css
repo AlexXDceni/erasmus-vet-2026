@@ -19,7 +19,7 @@ body {
 
 /* Navbar */
 .navbar {
-    background-color: oklab(75% 0 -0.00011);
+    background-color: oklab(100% 0 -0.00011 / 0.8);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
@@ -132,7 +132,7 @@ body {
     color: #ffffff;
     font-size: 1.8rem;
     cursor: pointer;
-    align-self: flex-start;
+    align-self: flex-end;
     margin-bottom: 20px;
 }
 
@@ -156,7 +156,6 @@ body {
     color: #3498db;
 }
 
-/* Hero Section */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./asstes/hero.jpeg') no-repeat center center/cover;
     color: white;
