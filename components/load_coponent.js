@@ -1,26 +1,13 @@
 async function loadComponents() {
     try {
-        // Obținem calea curentă
-        const pathname = window.location.pathname;
-        
-        // Calculăm câte niveluri suntem în interior (ex: /pages/culturala/spania.html are 2 subfoldere)
-        // Eliminăm prima și ultima parte (domeniul/fișierul)
-        const pathSegments = pathname.split('/').filter(segment => segment.length > 0);
-        
-        // Dacă suntem pe GitHub Pages, ignorăm numele repository-ului dacă apare în cale
-        const cleanSegments = pathSegments.filter(s => !s.includes('.html') && s !== 'erasmus-vet-2026');
-        
-        // Generăm prefixul de urcare în directoare (ex: "", "../", "../../")
-        const depth = cleanSegments.length;
-        const rootPrefix = depth > 0 ? '../'.repeat(depth) : './';
 
-        // 1. Încarcă Navbar-ul
-        const navResponse = await fetch(rootPrefix + 'components/navbar.html');
+        const navResponse = await fetch('components/navbar.html');
+        if (!navResponse.ok) throw new Error(`Navbar HTTP ${navResponse.status}`);
         const navData = await navResponse.text();
         document.getElementById('navbar-placeholder').innerHTML = navData;
 
-        // 2. Încarcă Footer-ul
-        const footerResponse = await fetch(rootPrefix + 'components/footer.html');
+        const footerResponse = await fetch('components/footer.html');
+        if (!footerResponse.ok) throw new Error(`Footer HTTP ${footerResponse.status}`);
         const footerData = await footerResponse.text();
         document.getElementById('footer-placeholder').innerHTML = footerData;
 
@@ -31,7 +18,6 @@ async function loadComponents() {
             });
         });        
 
-        // 4. Activează meniul mobil și dropdown-urile
         initMobileMenu();
 
     } catch (error) {
