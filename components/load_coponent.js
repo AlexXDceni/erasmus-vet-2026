@@ -25,11 +25,7 @@ async function loadComponents() {
         document.getElementById('footer-placeholder').innerHTML = footerData;
 
         // 3. Corectează căile link-urilor din meniu
-        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
-                e.preventDefault();
-            });
-        });        
+        fixNavigationLinks(rootPrefix);
 
         // 4. Activează meniul mobil și dropdown-urile
         initMobileMenu();
@@ -39,7 +35,40 @@ async function loadComponents() {
     }
 }
 
-``
+function fixNavigationLinks(rootPrefix) {
+    const currentPath = window.location.pathname;
+
+    // Prevenim navigarea la click pe toggle-urile de dropdown (Desktop)
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+        });
+    });
+
+    // Selectăm toate link-urile nav
+    const allLinks = document.querySelectorAll('.nav-menu a, .mobile-menu a, .nav-brand');
+
+    allLinks.forEach(link => {
+        // Dacă este toggle, nu modificăm href
+        if (link.classList.contains('dropdown-toggle')) return;
+
+        // Preluăm data-page sau href-ul existent
+        let targetPage = link.getAttribute('data-page');
+
+        if (link.classList.contains('nav-brand') || targetPage === 'index.html') {
+            link.setAttribute('href', rootPrefix + 'index.html');
+        } else if (targetPage) {
+            link.setAttribute('href', rootPrefix + 'pages/' + targetPage);
+        }
+
+        // Marcare pagină activă
+        const constructedHref = link.getAttribute('href');
+        if (constructedHref && currentPath.endsWith(targetPage)) {
+            link.classList.add('active');
+        }
+    });
+}
+
 function initMobileMenu() {
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileSidebar = document.getElementById('mobile-sidebar');
