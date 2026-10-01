@@ -421,3 +421,17 @@ body {
         font-size: 2rem;
     }
 }
+/*pt ramurile fluxului 2 la jurnale*/
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%; /* Se deschide în dreapta */
+    display: none;
+}
+
+.dropdown-submenu:hover .dropdown-menu {
+    display: block;
+}
