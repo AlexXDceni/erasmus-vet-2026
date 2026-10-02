@@ -9,7 +9,6 @@ body {
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
-    /* padding-top: 60px; */
 }
 
 .container {
@@ -18,13 +17,13 @@ body {
     padding: 0 20px;
 }
 
-/* Navbar */
+/* --- Navbar Base --- */
 .navbar {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    position: fixed; /* Schimbat din sticky în fixed */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -36,17 +35,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-}
-
-.nav-container>a img{
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    background-image: url('./assets/logo.jpeg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    border-radius: 50%;
 }
 
 .nav-brand {
@@ -61,6 +49,9 @@ body {
 
 .nav-brand img {
     height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .nav-menu {
@@ -77,11 +68,12 @@ body {
     transition: color 0.3s;
 }
 
-.nav-menu a:hover, .nav-menu a.active {
+.nav-menu a:hover, 
+.nav-menu a.active {
     color: #0066cc;
 }
 
-/* Desktop Dropdown Styles */
+/* --- Desktop Dropdown & Nested Submenus --- */
 .nav-menu .dropdown {
     position: relative;
 }
@@ -91,61 +83,54 @@ body {
     top: 100%;
     left: 0;
     background-color: #ffffff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
     border-radius: 6px;
     padding: 8px 0;
-    min-width: 160px;
+    min-width: 180px;
     display: none;
     list-style: none;
     z-index: 1000;
 }
 
 .nav-menu .dropdown-menu li a {
-    display: block;
-    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 18px;
     color: #333;
+    font-size: 0.95rem;
     text-decoration: none;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nav-menu .dropdown-menu li a:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f7ff;
+    color: #0066cc;
 }
 
-/* Afișează dropdown-ul la hover pe desktop */
+/* Meniu de nivel 2 (Submenu flyout) pe Desktop */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: 2px;
+    border-radius: 6px;
+}
+
 @media (min-width: 769px) {
-    .nav-menu .dropdown:hover .dropdown-menu {
+    .nav-menu .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown-submenu:hover > .dropdown-menu {
         display: block;
     }
 }
 
-/* Mobile Sidebar Dropdown Styles */
-.mobile-dropdown-btn {
-    width: 100%;
-    background: none;
-    border: none;
-    text-align: left;
-    font-size: 1rem;
-    padding: 10px 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #ffffff;
-}
-
-.mobile-submenu {
-    display: none;
-    list-style: none;
-    padding-left: 15px;
-}
-
-.mobile-dropdown.open .mobile-submenu {
-    display: block;
-}
-
-
-/* --- Stiluri Buton Hamburger și Meniu Mobil --- */
+/* --- Mobile Drawer & Accordion Dropdowns --- */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -164,12 +149,11 @@ body {
     transition: 0.3s;
 }
 
-/* Meniul Lateral (Drawer) */
 .mobile-sidebar {
     position: fixed;
     top: 0;
-    left: -280px;
-    width: 280px;
+    left: -300px;
+    width: 300px;
     height: 100vh;
     background-color: #1a1a1a;
     color: #ffffff;
@@ -186,14 +170,13 @@ body {
     left: 0;
 }
 
-/* Fundal întunecat pentru ecran */
 .sidebar-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     visibility: hidden;
     opacity: 0;
     transition: 0.3s;
@@ -205,7 +188,6 @@ body {
     opacity: 1;
 }
 
-/* Butonul de închidere (X) din sidebar */
 .sidebar-close {
     background: none;
     border: none;
@@ -213,22 +195,22 @@ body {
     font-size: 1.8rem;
     cursor: pointer;
     align-self: flex-end;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .mobile-menu {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 .mobile-menu a {
     text-decoration: none;
     color: #e2e8f0;
-    font-size: 1.1rem;
+    font-size: 1rem;
     display: block;
-    padding: 5px 0;
+    padding: 8px 0;
     transition: color 0.2s;
 }
 
@@ -236,6 +218,47 @@ body {
     color: #3498db;
 }
 
+/* Butoane Acordeon Mobil */
+.mobile-dropdown-btn,
+.mobile-accordion-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    padding: 10px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.mobile-accordion-btn {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    padding: 8px 0;
+}
+
+.mobile-submenu {
+    display: none;
+    list-style: none;
+    padding-left: 15px;
+}
+
+.mobile-nested-menu {
+    display: none;
+    list-style: none;
+    padding-left: 15px;
+}
+
+.mobile-dropdown.open > .mobile-submenu,
+.mobile-nested-dropdown.open > .mobile-nested-menu {
+    display: block;
+}
+
+/* --- Content Sections & Layout --- */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./assets/hero.jpeg') no-repeat center center/cover;
     color: white;
@@ -245,7 +268,6 @@ body {
 }
 
 .hero.page-header {
-    /* height: auto; */
     padding: 80px 20px;
 }
 
@@ -255,8 +277,8 @@ body {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-/* Sections */
-.about-section, .content-section {
+.about-section, 
+.content-section {
     padding: 80px 0;
     background-color: #ffffff;
 }
@@ -273,18 +295,19 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.about-content h2, .content-section h2 {
+.about-content h2, 
+.content-section h2 {
     font-size: 2rem;
     color: #2c3e50;
     margin-bottom: 20px;
 }
 
-.about-content p, .content-section p {
+.about-content p, 
+.content-section p {
     font-size: 1.1rem;
     color: #666;
 }
 
-/* Stiluri listă Erasmus+ */
 .content-section ul {
     list-style-type: none;
     padding-left: 0;
@@ -374,7 +397,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* Footer */
+/* --- Footer --- */
 .footer {
     background-color: #262a2e;
     color: #ecf0f1;
@@ -403,13 +426,13 @@ body {
     color: #bdc3c7;
 }
 
-/* Responsive */
+/* --- Responsive Media Queries --- */
 @media (max-width: 768px) {
     .nav-menu {
-        display: none; /* Ascunde meniul clasic pe ecrane mici */
+        display: none;
     }
     .hamburger {
-        display: flex; /* Afișează butonul hamburger pe ecrane mici */
+        display: flex;
     }
     .about-grid {
         flex-direction: column;
@@ -420,18 +443,4 @@ body {
     .hero h1 {
         font-size: 2rem;
     }
-}
-/*pt ramurile fluxului 2 la jurnale*/
-.dropdown-submenu {
-    position: relative;
-}
-
-.dropdown-submenu .dropdown-menu {
-    top: 0;
-    left: 100%; /* Se deschide în dreapta */
-    display: none;
-}
-
-.dropdown-submenu:hover .dropdown-menu {
-    display: block;
 }

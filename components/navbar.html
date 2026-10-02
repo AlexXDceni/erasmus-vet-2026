@@ -12,9 +12,21 @@
             <!-- Dropdown Experienta Culturala -->
             <li class="dropdown">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle">Experienta culturala <i class="chevron">▾</i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="pages/culturala/spania.html" data-page="culturala/spania.html">Fluxul 1</a></li>
-                    <li><a href="pages/culturala/portugalia.html" data-page="culturala/portugalia.html">Fluxul 2</a></li>
+                <ul class="dropdown-menu">                    
+                    <li class="dropdown-submenu">
+                        <a href="#">Fluxul 1 ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pages/culturala/mate-info.html">Mate-Info</a></li>
+                            <li><a href="pages/culturala/pedagogie.html">Pedagogie</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a href="#">Fluxul 2 ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pages/culturala/mate-info.html">Mate-Info</a></li>
+                            <li><a href="pages/culturala/pedagogie.html">Pedagogie</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
 
@@ -22,7 +34,14 @@
             <li class="dropdown">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle">Jurnale <i class="chevron">▾</i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="pages/jurnale/spania.html" data-page="jurnale/spania.html">Fluxul 1</a></li>
+
+                    <li class="dropdown-submenu">
+                        <a href="#">Fluxul 1 ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pages/jurnale/mate-info.html">Mate-Info</a></li>
+                            <li><a href="pages/jurnale/pedagogie.html">Pedagogie</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown-submenu">
                         <a href="#">Fluxul 2 ▾</a>
                         <ul class="dropdown-menu">
@@ -30,6 +49,7 @@
                             <li><a href="pages/jurnale/pedagogie.html">Pedagogie</a></li>
                         </ul>
                     </li>
+
                 </ul>
             </li>
 
@@ -50,6 +70,7 @@
 <div class="sidebar-overlay" id="sidebar-overlay"></div>
 <aside class="mobile-sidebar" id="mobile-sidebar">
     <button class="sidebar-close" id="sidebar-close" aria-label="Închide meniul">&times;</button>
+    
     <ul class="mobile-menu">
         <li><a href="index.html" data-page="index.html">Acasa</a></li>
         
@@ -57,8 +78,20 @@
         <li class="mobile-dropdown">
             <button class="mobile-dropdown-btn">Experienta culturala <span>▾</span></button>
             <ul class="mobile-submenu">
-                <li><a href="pages/culturala/spania.html" data-page="culturala/spania.html">Fluxul 1</a></li>
-                <li><a href="pages/culturala/portugalia.html" data-page="culturala/portugalia.html">Fluxul 2</a></li>
+                <li class="mobile-nested-dropdown">
+                    <button class="mobile-accordion-btn">Fluxul 1 <span>▾</span></button>
+                    <ul class="mobile-nested-menu">
+                        <li><a href="pages/culturala/mate-info.html" data-page="culturala/mate-info.html">Mate-Info</a></li>
+                        <li><a href="pages/culturala/pedagogie.html" data-page="culturala/pedagogie.html">Pedagogie</a></li>
+                    </ul>
+                </li>
+                <li class="mobile-nested-dropdown">
+                    <button class="mobile-accordion-btn">Fluxul 2 <span>▾</span></button>
+                    <ul class="mobile-nested-menu">
+                        <li><a href="pages/culturala/mate-info.html" data-page="culturala/mate-info.html">Mate-Info</a></li>
+                        <li><a href="pages/culturala/pedagogie.html" data-page="culturala/pedagogie.html">Pedagogie</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
 
@@ -66,8 +99,20 @@
         <li class="mobile-dropdown">
             <button class="mobile-dropdown-btn">Jurnale <span>▾</span></button>
             <ul class="mobile-submenu">
-                <li><a href="pages/jurnale/spania.html" data-page="jurnale/spania.html">Fluxul 1</a></li>
-                <li><a href="pages/jurnale/portugalia.html" data-page="jurnale/portugalia.html">Fluxul 2</a></li>
+                <li class="mobile-nested-dropdown">
+                    <button class="mobile-accordion-btn">Fluxul 1 <span>▾</span></button>
+                    <ul class="mobile-nested-menu">
+                        <li><a href="pages/jurnale/mate-info.html" data-page="jurnale/mate-info.html">Mate-Info</a></li>
+                        <li><a href="pages/jurnale/pedagogie.html" data-page="jurnale/pedagogie.html">Pedagogie</a></li>
+                    </ul>
+                </li>
+                <li class="mobile-nested-dropdown">
+                    <button class="mobile-accordion-btn">Fluxul 2 <span>▾</span></button>
+                    <ul class="mobile-nested-menu">
+                        <li><a href="pages/jurnale/mate-info.html" data-page="jurnale/mate-info.html">Mate-Info</a></li>
+                        <li><a href="pages/jurnale/pedagogie.html" data-page="jurnale/pedagogie.html">Pedagogie</a></li>
+                    </ul>
+                </li>
             </ul>
         </li>
 
