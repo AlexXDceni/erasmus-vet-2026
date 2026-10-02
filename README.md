@@ -1,4 +1,6 @@
-Website: https://alexxdceni.github.io/erasmus-vet-2026
+Website: https://sites.google.com/view/erasmus-vet-2026/erasmus-vet-2026
+
+https://alexxdceni.github.io/erasmus-vet-2026
 
 Erasmus+ Vet 2026
 
