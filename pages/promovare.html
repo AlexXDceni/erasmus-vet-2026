@@ -7,22 +7,303 @@
     <base href="../">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://www.gstatic.com/images/branding/productlogos/sites_2026/v3/ico/sites_2026_16dp.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS pentru Pagina de Promovare */
+        .promo-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0px 20px;
+            padding-top: 40px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .promo-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .promo-header h1 {
+            font-size: 2.2rem;
+            color: #1a365d;
+            margin-bottom: 8px;
+        }
+
+        .promo-header p {
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        /* Filtre */
+        .promo-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 18px;
+            border: 1px solid #cbd5e0;
+            background: #ffffff;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #4a5568;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #2b6cb0;
+            color: #ffffff;
+            border-color: #2b6cb0;
+            box-shadow: 0 4px 10px rgba(43, 108, 176, 0.25);
+        }
+
+        /* Grid Responsiv & Flexibil */
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            align-items: start;
+        }
+
+        /* Card-uri */
+        .promo-card {
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+
+        /* Media Containers */
+        .card-media {
+            width: 100%;
+            background-color: #f7fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .card-media img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-wrapper {
+            background: #000;
+            padding: 10px 0;
+        }
+
+        .pdf-wrapper iframe {
+            border: none;
+            width: 100%;
+            height: 320px;
+        }
+
+        /* Detalii Card */
+        .card-body {
+            padding: 18px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .badge-image { background: #ebf8ff; color: #2b6cb0; }
+        .badge-video { background: #feebc8; color: #c05621; }
+        .badge-pdf   { background: #fed7d7; color: #9b2c2c; }
+
+        .card-body h3 {
+            font-size: 1.15rem;
+            color: #2d3748;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .card-date {
+            font-size: 0.8rem;
+            color: #a0aec0;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #319795;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-download:hover {
+            background: #234e52;
+        }
+    </style>
 </head>
 <body>
 
     <div id="navbar-placeholder"></div>
 
+    <main class="promo-container">
+        <!-- Header -->
+        <header class="promo-header">
+            <h1>Materiale de Promovare</h1>
+            <p>Aici găsești clipuri, poze și documente din cadrul proiectului Erasmus+ VET 2026.</p>
+        </header>
 
+        <!-- Filtre -->
+        <div class="promo-filters">
+            <button class="filter-btn active" onclick="filterContent('all', this)">Toate</button>
+            <button class="filter-btn" onclick="filterContent('image', this)">Poze</button>
+            <button class="filter-btn" onclick="filterContent('video', this)">Video / Facebook</button>
+            <button class="filter-btn" onclick="filterContent('pdf', this)">Documente PDF</button>
+        </div>
 
-
-    <main style="height: 100vh;"></main>
-
-
-
-
-
+        <!-- Gridul Dinamic -->
+        <div class="promo-grid" id="promo-grid"></div>
+    </main>
 
     <footer class="footer" id="footer-placeholder"></footer>
+
     <script src="components/load_coponent.js"></script>
+
+    <script>
+        // LISTA TA DE MATERIALE (Adaugi / Modifici aici oricâte vrei)
+        const materialePromovare = [
+            {
+                type: 'video',
+                title: 'Facebook Reel - Prezentare Erasmus',
+                date: '2026',
+                iframeHtml: `<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4594651954114670%2F&show_text=false&width=340&t=0" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
+            },
+            {
+                type: 'image',
+                title: 'Activitati de Formare VET',
+                date: '2026',
+                src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80',
+                caption: 'Participanții în timpul sesiunilor practice.'
+            },
+            {
+                type: 'pdf',
+                title: 'Ghidul Participantului VET',
+                date: '2026',
+                pdfUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+                description: 'Consultați documentul PDF oficial pentru mai multe detalii.'
+            }
+        ];
+
+        function renderPromovare(filtru = 'all') {
+            const grid = document.getElementById('promo-grid');
+            grid.innerHTML = '';
+
+            const items = filtru === 'all' 
+                ? materialePromovare 
+                : materialePromovare.filter(i => i.type === filtru);
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `promo-card`;
+
+                let mediaContent = '';
+                let badgeHTML = '';
+
+                if (item.type === 'image') {
+                    badgeHTML = `<span class="badge badge-image"><i class="fa-regular fa-image"></i> Poză</span>`;
+                    mediaContent = `
+                        <div class="card-media">
+                            <img src="${item.src}" alt="${item.title}" loading="lazy">
+                        </div>
+                    `;
+                } else if (item.type === 'video') {
+                    badgeHTML = `<span class="badge badge-video"><i class="fa-solid fa-play"></i> Video</span>`;
+                    mediaContent = `
+                        <div class="card-media video-wrapper">
+                            ${item.iframeHtml}
+                        </div>
+                    `;
+                } else if (item.type === 'pdf') {
+                    badgeHTML = `<span class="badge badge-pdf"><i class="fa-regular fa-file-pdf"></i> PDF</span>`;
+                    mediaContent = `
+                        <div class="card-media pdf-wrapper">
+                            <iframe src="${item.pdfUrl}#toolbar=0"></iframe>
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    ${mediaContent}
+                    <div class="card-body">
+                        ${badgeHTML}
+                        <h3>${item.title}</h3>
+                        ${item.caption ? `<p>${item.caption}</p>` : ''}
+                        ${item.description ? `<p>${item.description}</p>` : ''}
+                        <div class="card-footer">
+                            <span class="card-date">${item.date}</span>
+                            ${item.type === 'pdf' ? `
+                                <a href="${item.pdfUrl}" target="_blank" class="btn-download">
+                                    <i class="fa-solid fa-download"></i> Deschide
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function filterContent(type, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderPromovare(type);
+        }
+
+        // Randare inițială
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPromovare();
+        });
+    </script>
 </body>
 </html>
