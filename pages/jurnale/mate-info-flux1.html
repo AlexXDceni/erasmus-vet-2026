@@ -272,13 +272,6 @@
         <!-- SECȚIUNEA 1: JURNALE ELEVI -->
         <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Jurnalele Elevilor</h2>
 
-        <!-- Filtre Dinamice -->
-        <div class="cultural-filters">
-            <button class="filter-btn active" onclick="filterContent('all', this)">Toate</button>
-            <button class="filter-btn" onclick="filterContent('pdf', this)">Jurnale PDF</button>
-            <button class="filter-btn" onclick="filterContent('image', this)">Galerii Poze</button>
-            <button class="filter-btn" onclick="filterContent('video', this)">Video / Facebook</button>
-        </div>
 
         <!-- Grid Dinamic de Jurnale -->
         <div class="cultural-grid" id="cultural-grid"></div>
@@ -298,49 +291,28 @@
         const materialeCulturale = [
             {
                 type: 'pdf',
-                title: 'Jurnal de Bord - Practică Web',
-                studentName: 'Alexandru Popa',
-                location: 'Montijo, Portugalia',
-                date: '2026',
-                pdfUrl: 'assets/docs/jurnal_alexandru.pdf', // Schimbă cu calea ta
-                description: 'Documentarea completă a celor două săptămâni de stagiu și activități de învățare.'
+                studentName: 'Dobre D. Darius Adrian',
+                pdfUrl: 'assets/dobre.pdf', 
             },
             {
-                type: 'image',
-                title: 'Jurnal Vizual & Galerie Foto',
-                studentName: 'Maria Ionescu',
-                location: 'Lisabona, Portugalia',
-                date: '2026',
-                src: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80',
-                caption: 'Imagini reprezentative din timpul orelor de practică și vizitelor culturale.'
+                type: 'pdf',
+                studentName: 'Drugan IS Ion Andrei',
+                pdfUrl: 'assets/drugan.pdf', 
             },
             {
-                type: 'video',
-                title: 'Reel - Impresii din Practică',
-                studentName: 'Andrei Stancu',
-                location: 'Montijo, Portugalia',
-                date: '2026',
-                iframeHtml: `<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4594651954114670%2F&show_text=false&width=340&t=0" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
-            }
+                type: 'pdf',
+                studentName: 'Toghe Ioan Rares',
+                pdfUrl: 'assets/toghe.pdf', 
+            },
         ];
 
         // 2. LISTA DINAMICĂ CU CITATE / IMPRESII
         const citateElevi = [
             {
-                quote: "Stagiul în Montijo mi-a dat încredere că pot construi proiecte web cap-coadă. A fost o experiență de neuitat!",
-                author: "Alexandru Popa",
-                role: "Elev Mate-Info"
+                quote: "Am apreciat abordarea practică, care a făcut teoria mult mai ușor de înțeles.",
+
+                author: "Dobre D. Darius Adrian",
             },
-            {
-                quote: "M-a impresionat mult cultura portugheză și modul în care am lucrat în echipa pe parcursul celor 14 zile.",
-                author: "Elena Radu",
-                role: "Elev Pedagogie"
-            },
-            {
-                quote: "A fost combinația perfectă între învățarea de noi tehnologii și dezvoltarea personală.",
-                author: "Matei Vasilescu",
-                role: "Elev Mate-Info"
-            }
         ];
 
         // Randare Jurnale
@@ -386,7 +358,7 @@
                     ${mediaContent}
                     <div class="card-body">
                         ${badgeHTML}
-                        <h3>${item.title}</h3>
+                        <h3>${item.title ? item.title : ''}</h3>
                         ${item.studentName ? `<div class="student-name"><i class="fa-solid fa-user-graduate"></i> ${item.studentName}</div>` : ''}
                         <div class="card-footer">
                             <span class="card-date">2025</span>

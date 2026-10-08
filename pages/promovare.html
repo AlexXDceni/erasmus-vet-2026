@@ -193,14 +193,6 @@
             <p>Aici găsești clipuri, poze și documente din cadrul proiectului Erasmus+ VET 2026.</p>
         </header>
 
-        <!-- Filtre -->
-        <div class="promo-filters">
-            <button class="filter-btn active" onclick="filterContent('all', this)">Toate</button>
-            <button class="filter-btn" onclick="filterContent('image', this)">Poze</button>
-            <button class="filter-btn" onclick="filterContent('video', this)">Video / Facebook</button>
-            <button class="filter-btn" onclick="filterContent('pdf', this)">Documente PDF</button>
-        </div>
-
         <!-- Gridul Dinamic -->
         <div class="promo-grid" id="promo-grid"></div>
     </main>
@@ -218,19 +210,35 @@
                 date: '2026',
                 iframeHtml: `<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4594651954114670%2F&show_text=false&width=340&t=0" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
             },
+            // {
+            //     type: 'video',
+            //     title: ' Prezentare Erasmus',
+            //     date: '2026',
+            //     iframeHtml: `<iframe src="assets/Video_VET.mp4" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
+            // },
+            // {
+            //     type: 'video',
+            //     title: ' Prezentare Erasmus',
+            //     date: '2026',
+            //     iframeHtml: `<iframe src="assets/Video ProJect 1.mp4" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
+            // },
+            // {
+            //     type: 'video',
+            //     title: ' Prezentare Erasmus',
+            //     date: '2026',
+            //     iframeHtml: `<iframe src="assets/pedagogie.mp4" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
+            // },
             {
-                type: 'image',
-                title: 'Activitati de Formare VET',
+                type: 'video',
+                title: ' Prezentare Erasmus',
                 date: '2026',
-                src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80',
-                caption: 'Participanții în timpul sesiunilor practice.'
+                iframeHtml: `<iframe src="assets/video_prezentare_lisabona2.mp4" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
             },
             {
-                type: 'pdf',
-                title: 'Ghidul Participantului VET',
+                type: 'video',
+                title: ' Prezentare Erasmus',
                 date: '2026',
-                pdfUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-                description: 'Consultați documentul PDF oficial pentru mai multe detalii.'
+                iframeHtml: `<iframe src="assets/Blue and Cream Illustrative Travel Plan Presentation.mp4" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
             }
         ];
 
@@ -263,13 +271,6 @@
                             ${item.iframeHtml}
                         </div>
                     `;
-                } else if (item.type === 'pdf') {
-                    badgeHTML = `<span class="badge badge-pdf"><i class="fa-regular fa-file-pdf"></i> PDF</span>`;
-                    mediaContent = `
-                        <div class="card-media pdf-wrapper">
-                            <iframe src="${item.pdfUrl}#toolbar=0"></iframe>
-                        </div>
-                    `;
                 }
 
                 card.innerHTML = `
@@ -281,11 +282,6 @@
                         ${item.description ? `<p>${item.description}</p>` : ''}
                         <div class="card-footer">
                             <span class="card-date">${item.date}</span>
-                            ${item.type === 'pdf' ? `
-                                <a href="${item.pdfUrl}" target="_blank" class="btn-download">
-                                    <i class="fa-solid fa-download"></i> Deschide
-                                </a>
-                            ` : ''}
                         </div>
                     </div>
                 `;

@@ -209,7 +209,6 @@
             <button class="filter-btn active" onclick="filterContent('all', this)">Toate</button>
             <button class="filter-btn" onclick="filterContent('image', this)">Galerie Foto</button>
             <button class="filter-btn" onclick="filterContent('video', this)">Clipuri & Reels</button>
-            <button class="filter-btn" onclick="filterContent('pdf', this)">Jurnale de Călătorie</button>
         </div>
 
         <!-- Grid Dinamic de Conținut -->
@@ -223,29 +222,61 @@
     <script>
         // LISTA CU ACTIVITĂȚI ȘI EXPERIENȚE CULTURALE
         const materialeCulturale = [
+            // {
+            //     type: 'video',
+            //     title: 'Impresii din Excursia Culturală',
+            //     date: '2026',
+            //     iframeHtml: `<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4594651954114670%2F&show_text=false&width=340&t=0" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
+            // },
             {
                 type: 'image',
                 title: 'Vizită la Centrul Istoric',
-                location: 'Lisabona, Portugalia',
                 date: '2026',
-                src: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80',
+                src: 'assets/spania1.jpg',
                 caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
             },
             {
-                type: 'video',
-                title: 'Impresii din Excursia Culturală',
-                location: 'Montijo, Portugalia',
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
                 date: '2026',
-                iframeHtml: `<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4594651954114670%2F&show_text=false&width=340&t=0" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
+                src: 'assets/spania2.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
             },
             {
-                type: 'pdf',
-                title: 'Jurnal Cultural - Ghidul Orașului',
-                location: 'Portugalia',
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
                 date: '2026',
-                pdfUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-                description: 'Ghidul practic și impresiile scrise ale elevilor din cadrul mobilității culturale.'
-            }
+                src: 'assets/spania3.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania4.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania5.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania6.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania7.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
         ];
 
         function renderCultural(filtru = 'all') {
@@ -275,13 +306,6 @@
                     mediaContent = `
                         <div class="card-media video-wrapper">
                             ${item.iframeHtml}
-                        </div>
-                    `;
-                } else if (item.type === 'pdf') {
-                    badgeHTML = `<span class="badge badge-journal"><i class="fa-regular fa-file-pdf"></i> Jurnal PDF</span>`;
-                    mediaContent = `
-                        <div class="card-media pdf-wrapper">
-                            <iframe src="${item.pdfUrl}#toolbar=0"></iframe>
                         </div>
                     `;
                 }
