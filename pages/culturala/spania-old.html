@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erasmus VET 2026 - Experiență Culturală</title>
+    <base href="../../">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://www.gstatic.com/images/branding/productlogos/sites_2026/v3/ico/sites_2026_16dp.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Stiluri dedicate paginii de Experiență Culturală */
+        .cultural-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            padding-top: 40px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .cultural-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .cultural-header h1 {
+            font-size: 2.3rem;
+            color: #1a365d;
+            margin-bottom: 10px;
+        }
+
+        .cultural-header p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Filtre Categorie */
+        .cultural-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 9px 20px;
+            border: 1px solid #cbd5e0;
+            background: #ffffff;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #4a5568;
+            transition: all 0.25s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #2b6cb0;
+            color: #ffffff;
+            border-color: #2b6cb0;
+            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.25);
+        }
+
+        /* Grid Responsiv */
+        .cultural-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            align-items: start;
+        }
+
+        /* Card-uri */
+        .cultural-card {
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .cultural-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+
+        /* Media Elements */
+        .card-media {
+            width: 100%;
+            background-color: #f7fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .card-media img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-wrapper {
+            background: #000;
+            padding: 10px 0;
+        }
+
+        .pdf-wrapper iframe {
+            border: none;
+            width: 100%;
+            height: 320px;
+        }
+
+        /* Corp Card */
+        .card-body {
+            padding: 20px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .badge-image   { background: #eef2ff; color: #4338ca; }
+        .badge-video   { background: #fef3c7; color: #b45309; }
+        .badge-journal { background: #ecfdf5; color: #047857; }
+
+        .card-body h3 {
+            font-size: 1.2rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-location {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 12px;
+            line-height: 1.45;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .card-date {
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #0d9488;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-download:hover {
+            background: #0f766e;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <main class="cultural-container">
+        <!-- Antet -->
+        <header class="cultural-header">
+            <h1>Experiență Culturală</h1>
+            <p>Descoperă tradițiile, excursiile, vizitele ghidate și momentele de neuitat trăite de participanții proiectului Erasmus+ VET 2026.</p>
+        </header>
+
+        <!-- Filtre Dinamice -->
+        <div class="cultural-filters">
+            <button class="filter-btn active" onclick="filterContent('all', this)">Toate</button>
+            <button class="filter-btn" onclick="filterContent('image', this)">Galerie Foto</button>
+            <button class="filter-btn" onclick="filterContent('video', this)">Clipuri & Reels</button>
+        </div>
+
+        <!-- Grid Dinamic de Conținut -->
+        <div class="cultural-grid" id="cultural-grid"></div>
+    </main>
+
+    <footer class="footer" id="footer-placeholder"></footer>
+
+    <script src="components/load_coponent.js"></script>
+
+    <script>
+        // LISTA CU ACTIVITĂȚI ȘI EXPERIENȚE CULTURALE
+        const materialeCulturale = [
+            // {
+            //     type: 'video',
+            //     title: 'Impresii din Excursia Culturală',
+            //     date: '2026',
+            //     iframeHtml: `<iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F4594651954114670%2F&show_text=false&width=340&t=0" width="340" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`
+            // },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania1.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania2.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania3.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania4.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania5.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania6.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+            {
+                type: 'image',
+                title: 'Vizită la Centrul Istoric',
+                date: '2026',
+                src: 'assets/spania7.jpg',
+                caption: 'Explorând străzile istorice și arhitectura tradițională pe parcursul ieșirilor culturale.'
+            },
+        ];
+
+        function renderCultural(filtru = 'all') {
+            const grid = document.getElementById('cultural-grid');
+            grid.innerHTML = '';
+
+            const items = filtru === 'all' 
+                ? materialeCulturale 
+                : materialeCulturale.filter(item => item.type === filtru);
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'cultural-card';
+
+                let mediaContent = '';
+                let badgeHTML = '';
+
+                if (item.type === 'image') {
+                    badgeHTML = `<span class="badge badge-image"><i class="fa-regular fa-image"></i> Fotografie</span>`;
+                    mediaContent = `
+                        <div class="card-media">
+                            <img src="${item.src}" alt="${item.title}" loading="lazy">
+                        </div>
+                    `;
+                } else if (item.type === 'video') {
+                    badgeHTML = `<span class="badge badge-video"><i class="fa-solid fa-film"></i> Video / Reel</span>`;
+                    mediaContent = `
+                        <div class="card-media video-wrapper">
+                            ${item.iframeHtml}
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    ${mediaContent}
+                    <div class="card-body">
+                        ${badgeHTML}
+                        <h3>${item.title}</h3>
+                        ${item.location ? `
+                            <div class="card-location">
+                                <i class="fa-solid fa-location-dot"></i> ${item.location}
+                            </div>
+                        ` : ''}
+                        ${item.caption ? `<p>${item.caption}</p>` : ''}
+                        ${item.description ? `<p>${item.description}</p>` : ''}
+                        <div class="card-footer">
+                            <span class="card-date">${item.date}</span>
+                            ${item.type === 'pdf' ? `
+                                <a href="${item.pdfUrl}" target="_blank" class="btn-download">
+                                    <i class="fa-solid fa-download"></i> Citește PDF
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function filterContent(type, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderCultural(type);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCultural();
+        });
+    </script>
+</body>
+</html>
